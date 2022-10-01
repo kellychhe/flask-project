@@ -3,8 +3,9 @@
 -GET request sent to Flask API
 -use pprint to display json response"""
 
-## import request and pprint module
+## import request, yaml and pprint module
 import requests
+import yaml
 from pprint import pprint
 
 def main():
@@ -15,8 +16,11 @@ def main():
     # get data from the server and turn into json
     resp= requests.get(allordersurl).json()
 
+    # turn data to yaml for readability
+    yamlresp = yaml.dump(resp, sort_keys=False, explicit_start=True, default_flow_style=False)
+
     # print to console
-    pprint(resp)
+    pprint(yamlresp)
 
 # run main
 if __name__ == "__main__":
